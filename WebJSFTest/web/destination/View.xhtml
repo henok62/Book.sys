@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDestinationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDestinationLabel_destinationId}"/>
+                    <h:outputText value="#{destinationController.selected.destinationId}" title="#{bundle.ViewDestinationTitle_destinationId}"/>
+                    <h:outputText value="#{bundle.ViewDestinationLabel_destinationName}"/>
+                    <h:outputText value="#{destinationController.selected.destinationName}" title="#{bundle.ViewDestinationTitle_destinationName}"/>
+                    <h:outputText value="#{bundle.ViewDestinationLabel_destinationDescription}"/>
+                    <h:outputText value="#{destinationController.selected.destinationDescription}" title="#{bundle.ViewDestinationTitle_destinationDescription}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{destinationController.destroyAndView}" value="#{bundle.ViewDestinationDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDestinationEditLink}"/>
+                <br />
+                <h:commandLink action="#{destinationController.prepareCreate}" value="#{bundle.ViewDestinationCreateLink}" />
+                <br />
+                <h:commandLink action="#{destinationController.prepareList}" value="#{bundle.ViewDestinationShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDestinationIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
