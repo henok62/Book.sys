@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateScheduledActivityTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateScheduledActivityLabel_scheduledActivityId}" for="scheduledActivityId" />
+                    <h:inputText id="scheduledActivityId" value="#{scheduledActivityController.selected.scheduledActivityId}" title="#{bundle.CreateScheduledActivityTitle_scheduledActivityId}" required="true" requiredMessage="#{bundle.CreateScheduledActivityRequiredMessage_scheduledActivityId}"/>
+                    <h:outputLabel value="#{bundle.CreateScheduledActivityLabel_dateStart}" for="dateStart" />
+                    <h:inputText id="dateStart" value="#{scheduledActivityController.selected.dateStart}" title="#{bundle.CreateScheduledActivityTitle_dateStart}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateScheduledActivityLabel_dateEnd}" for="dateEnd" />
+                    <h:inputText id="dateEnd" value="#{scheduledActivityController.selected.dateEnd}" title="#{bundle.CreateScheduledActivityTitle_dateEnd}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateScheduledActivityLabel_scheduledTourId}" for="scheduledTourId" />
+                    <h:selectOneMenu id="scheduledTourId" value="#{scheduledActivityController.selected.scheduledTourId}" title="#{bundle.CreateScheduledActivityTitle_scheduledTourId}" >
+                        <f:selectItems value="#{scheduledTourController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateScheduledActivityLabel_activityId}" for="activityId" />
+                    <h:selectOneMenu id="activityId" value="#{scheduledActivityController.selected.activityId}" title="#{bundle.CreateScheduledActivityTitle_activityId}" >
+                        <f:selectItems value="#{activityController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{scheduledActivityController.create}" value="#{bundle.CreateScheduledActivitySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{scheduledActivityController.prepareList}" value="#{bundle.CreateScheduledActivityShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateScheduledActivityIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

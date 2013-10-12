@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBookingRowTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBookingRowLabel_bookingRowId}"/>
+                    <h:outputText value="#{bookingRowController.selected.bookingRowId}" title="#{bundle.ViewBookingRowTitle_bookingRowId}"/>
+                    <h:outputText value="#{bundle.ViewBookingRowLabel_scheduledActivityId}"/>
+                    <h:outputText value="#{bookingRowController.selected.scheduledActivityId}" title="#{bundle.ViewBookingRowTitle_scheduledActivityId}"/>
+                    <h:outputText value="#{bundle.ViewBookingRowLabel_scheduledTourId}"/>
+                    <h:outputText value="#{bookingRowController.selected.scheduledTourId}" title="#{bundle.ViewBookingRowTitle_scheduledTourId}"/>
+                    <h:outputText value="#{bundle.ViewBookingRowLabel_bookingId}"/>
+                    <h:outputText value="#{bookingRowController.selected.bookingId}" title="#{bundle.ViewBookingRowTitle_bookingId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{bookingRowController.destroyAndView}" value="#{bundle.ViewBookingRowDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewBookingRowEditLink}"/>
+                <br />
+                <h:commandLink action="#{bookingRowController.prepareCreate}" value="#{bundle.ViewBookingRowCreateLink}" />
+                <br />
+                <h:commandLink action="#{bookingRowController.prepareList}" value="#{bundle.ViewBookingRowShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewBookingRowIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

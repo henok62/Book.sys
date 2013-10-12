@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUserInstanceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUserInstanceLabel_userId}" for="userId" />
+                    <h:inputText id="userId" value="#{userInstanceController.selected.userId}" title="#{bundle.EditUserInstanceTitle_userId}" required="true" requiredMessage="#{bundle.EditUserInstanceRequiredMessage_userId}"/>
+                    <h:outputLabel value="#{bundle.EditUserInstanceLabel_username}" for="username" />
+                    <h:inputText id="username" value="#{userInstanceController.selected.username}" title="#{bundle.EditUserInstanceTitle_username}" />
+                    <h:outputLabel value="#{bundle.EditUserInstanceLabel_userPassword}" for="userPassword" />
+                    <h:inputText id="userPassword" value="#{userInstanceController.selected.userPassword}" title="#{bundle.EditUserInstanceTitle_userPassword}" />
+                    <h:outputLabel value="#{bundle.EditUserInstanceLabel_businessId}" for="businessId" />
+                    <h:selectOneMenu id="businessId" value="#{userInstanceController.selected.businessId}" title="#{bundle.EditUserInstanceTitle_businessId}" >
+                        <f:selectItems value="#{businessController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditUserInstanceLabel_personId}" for="personId" />
+                    <h:selectOneMenu id="personId" value="#{userInstanceController.selected.personId}" title="#{bundle.EditUserInstanceTitle_personId}" >
+                        <f:selectItems value="#{personController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditUserInstanceLabel_roleId}" for="roleId" />
+                    <h:selectOneMenu id="roleId" value="#{userInstanceController.selected.roleId}" title="#{bundle.EditUserInstanceTitle_roleId}" >
+                        <f:selectItems value="#{roleController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{userInstanceController.update}" value="#{bundle.EditUserInstanceSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditUserInstanceViewLink}"/>
+                <br />
+                <h:commandLink action="#{userInstanceController.prepareList}" value="#{bundle.EditUserInstanceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditUserInstanceIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

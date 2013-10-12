@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateBookingRowTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateBookingRowLabel_bookingRowId}" for="bookingRowId" />
+                    <h:inputText id="bookingRowId" value="#{bookingRowController.selected.bookingRowId}" title="#{bundle.CreateBookingRowTitle_bookingRowId}" required="true" requiredMessage="#{bundle.CreateBookingRowRequiredMessage_bookingRowId}"/>
+                    <h:outputLabel value="#{bundle.CreateBookingRowLabel_scheduledActivityId}" for="scheduledActivityId" />
+                    <h:selectOneMenu id="scheduledActivityId" value="#{bookingRowController.selected.scheduledActivityId}" title="#{bundle.CreateBookingRowTitle_scheduledActivityId}" >
+                        <f:selectItems value="#{scheduledActivityController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateBookingRowLabel_scheduledTourId}" for="scheduledTourId" />
+                    <h:selectOneMenu id="scheduledTourId" value="#{bookingRowController.selected.scheduledTourId}" title="#{bundle.CreateBookingRowTitle_scheduledTourId}" >
+                        <f:selectItems value="#{scheduledTourController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateBookingRowLabel_bookingId}" for="bookingId" />
+                    <h:selectOneMenu id="bookingId" value="#{bookingRowController.selected.bookingId}" title="#{bundle.CreateBookingRowTitle_bookingId}" >
+                        <f:selectItems value="#{bookingController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{bookingRowController.create}" value="#{bundle.CreateBookingRowSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{bookingRowController.prepareList}" value="#{bundle.CreateBookingRowShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateBookingRowIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBusinessTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBusinessLabel_businessId}"/>
+                    <h:outputText value="#{businessController.selected.businessId}" title="#{bundle.ViewBusinessTitle_businessId}"/>
+                    <h:outputText value="#{bundle.ViewBusinessLabel_orgNumber}"/>
+                    <h:outputText value="#{businessController.selected.orgNumber}" title="#{bundle.ViewBusinessTitle_orgNumber}"/>
+                    <h:outputText value="#{bundle.ViewBusinessLabel_mobilePhoneNumber}"/>
+                    <h:outputText value="#{businessController.selected.mobilePhoneNumber}" title="#{bundle.ViewBusinessTitle_mobilePhoneNumber}"/>
+                    <h:outputText value="#{bundle.ViewBusinessLabel_landlinePhoneNumber}"/>
+                    <h:outputText value="#{businessController.selected.landlinePhoneNumber}" title="#{bundle.ViewBusinessTitle_landlinePhoneNumber}"/>
+                    <h:outputText value="#{bundle.ViewBusinessLabel_faxNo}"/>
+                    <h:outputText value="#{businessController.selected.faxNo}" title="#{bundle.ViewBusinessTitle_faxNo}"/>
+                    <h:outputText value="#{bundle.ViewBusinessLabel_email}"/>
+                    <h:outputText value="#{businessController.selected.email}" title="#{bundle.ViewBusinessTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewBusinessLabel_businessDescription}"/>
+                    <h:outputText value="#{businessController.selected.businessDescription}" title="#{bundle.ViewBusinessTitle_businessDescription}"/>
+                    <h:outputText value="#{bundle.ViewBusinessLabel_logo}"/>
+                    <h:outputText value="#{businessController.selected.logo}" title="#{bundle.ViewBusinessTitle_logo}"/>
+                    <h:outputText value="#{bundle.ViewBusinessLabel_businessTypeId}"/>
+                    <h:outputText value="#{businessController.selected.businessTypeId}" title="#{bundle.ViewBusinessTitle_businessTypeId}"/>
+                    <h:outputText value="#{bundle.ViewBusinessLabel_destinationId}"/>
+                    <h:outputText value="#{businessController.selected.destinationId}" title="#{bundle.ViewBusinessTitle_destinationId}"/>
+                    <h:outputText value="#{bundle.ViewBusinessLabel_addressId}"/>
+                    <h:outputText value="#{businessController.selected.addressId}" title="#{bundle.ViewBusinessTitle_addressId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{businessController.destroyAndView}" value="#{bundle.ViewBusinessDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewBusinessEditLink}"/>
+                <br />
+                <h:commandLink action="#{businessController.prepareCreate}" value="#{bundle.ViewBusinessCreateLink}" />
+                <br />
+                <h:commandLink action="#{businessController.prepareList}" value="#{bundle.ViewBusinessShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewBusinessIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

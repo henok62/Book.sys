@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateBusinessTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateBusinessLabel_businessId}" for="businessId" />
+                    <h:inputText id="businessId" value="#{businessController.selected.businessId}" title="#{bundle.CreateBusinessTitle_businessId}" required="true" requiredMessage="#{bundle.CreateBusinessRequiredMessage_businessId}"/>
+                    <h:outputLabel value="#{bundle.CreateBusinessLabel_orgNumber}" for="orgNumber" />
+                    <h:inputText id="orgNumber" value="#{businessController.selected.orgNumber}" title="#{bundle.CreateBusinessTitle_orgNumber}" />
+                    <h:outputLabel value="#{bundle.CreateBusinessLabel_mobilePhoneNumber}" for="mobilePhoneNumber" />
+                    <h:inputText id="mobilePhoneNumber" value="#{businessController.selected.mobilePhoneNumber}" title="#{bundle.CreateBusinessTitle_mobilePhoneNumber}" />
+                    <h:outputLabel value="#{bundle.CreateBusinessLabel_landlinePhoneNumber}" for="landlinePhoneNumber" />
+                    <h:inputText id="landlinePhoneNumber" value="#{businessController.selected.landlinePhoneNumber}" title="#{bundle.CreateBusinessTitle_landlinePhoneNumber}" />
+                    <h:outputLabel value="#{bundle.CreateBusinessLabel_faxNo}" for="faxNo" />
+                    <h:inputText id="faxNo" value="#{businessController.selected.faxNo}" title="#{bundle.CreateBusinessTitle_faxNo}" />
+                    <h:outputLabel value="#{bundle.CreateBusinessLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{businessController.selected.email}" title="#{bundle.CreateBusinessTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateBusinessLabel_businessDescription}" for="businessDescription" />
+                    <h:inputText id="businessDescription" value="#{businessController.selected.businessDescription}" title="#{bundle.CreateBusinessTitle_businessDescription}" />
+                    <h:outputLabel value="#{bundle.CreateBusinessLabel_logo}" for="logo" />
+                    <h:inputTextarea rows="4" cols="30" id="logo" value="#{businessController.selected.logo}" title="#{bundle.CreateBusinessTitle_logo}" />
+                    <h:outputLabel value="#{bundle.CreateBusinessLabel_businessTypeId}" for="businessTypeId" />
+                    <h:selectOneMenu id="businessTypeId" value="#{businessController.selected.businessTypeId}" title="#{bundle.CreateBusinessTitle_businessTypeId}" >
+                        <f:selectItems value="#{businessTypeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateBusinessLabel_destinationId}" for="destinationId" />
+                    <h:selectOneMenu id="destinationId" value="#{businessController.selected.destinationId}" title="#{bundle.CreateBusinessTitle_destinationId}" >
+                        <f:selectItems value="#{destinationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateBusinessLabel_addressId}" for="addressId" />
+                    <h:selectOneMenu id="addressId" value="#{businessController.selected.addressId}" title="#{bundle.CreateBusinessTitle_addressId}" >
+                        <f:selectItems value="#{addressController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{businessController.create}" value="#{bundle.CreateBusinessSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{businessController.prepareList}" value="#{bundle.CreateBusinessShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateBusinessIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
