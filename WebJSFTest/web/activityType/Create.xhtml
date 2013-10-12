@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateActivityTypeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateActivityTypeLabel_activityTypeId}" for="activityTypeId" />
+                    <h:inputText id="activityTypeId" value="#{activityTypeController.selected.activityTypeId}" title="#{bundle.CreateActivityTypeTitle_activityTypeId}" required="true" requiredMessage="#{bundle.CreateActivityTypeRequiredMessage_activityTypeId}"/>
+                    <h:outputLabel value="#{bundle.CreateActivityTypeLabel_activityTypeName}" for="activityTypeName" />
+                    <h:inputText id="activityTypeName" value="#{activityTypeController.selected.activityTypeName}" title="#{bundle.CreateActivityTypeTitle_activityTypeName}" />
+                    <h:outputLabel value="#{bundle.CreateActivityTypeLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{activityTypeController.selected.description}" title="#{bundle.CreateActivityTypeTitle_description}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{activityTypeController.create}" value="#{bundle.CreateActivityTypeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{activityTypeController.prepareList}" value="#{bundle.CreateActivityTypeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateActivityTypeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

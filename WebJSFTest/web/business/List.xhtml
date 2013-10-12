@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBusinessTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListBusinessEmpty}" rendered="#{businessController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{businessController.items.rowCount > 0}">
+                    <h:outputText value="#{businessController.pagination.pageFirstItem + 1}..#{businessController.pagination.pageLastItem + 1}/#{businessController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{businessController.previous}" value="#{bundle.Previous} #{businessController.pagination.pageSize}" rendered="#{businessController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{businessController.next}" value="#{bundle.Next} #{businessController.pagination.pageSize}" rendered="#{businessController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{businessController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusinessTitle_businessId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.businessId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusinessTitle_orgNumber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.orgNumber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusinessTitle_mobilePhoneNumber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mobilePhoneNumber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusinessTitle_landlinePhoneNumber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.landlinePhoneNumber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusinessTitle_faxNo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.faxNo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusinessTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusinessTitle_businessDescription}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.businessDescription}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusinessTitle_logo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.logo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusinessTitle_businessTypeId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.businessTypeId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusinessTitle_destinationId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.destinationId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusinessTitle_addressId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.addressId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{businessController.prepareView}" value="#{bundle.ListBusinessViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{businessController.prepareEdit}" value="#{bundle.ListBusinessEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{businessController.destroy}" value="#{bundle.ListBusinessDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{businessController.prepareCreate}" value="#{bundle.ListBusinessCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListBusinessIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
