@@ -45,8 +45,6 @@
             </h:form>
             
             
-            
-            
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -115,6 +113,8 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
+                            <h:commandLink action="#{activityController.prepareScheduledActivityManager}" value="Schedule this activity"/>
+                            <h:outputText value=" "/>
                             <h:commandLink action="#{activityController.prepareView}" value="#{bundle.ListActivityViewLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{activityController.prepareEdit}" value="#{bundle.ListActivityEditLink}"/>
@@ -123,9 +123,6 @@
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
-                <br />
-                <h:commandLink action="#{activityController.prepareCreate}" value="#{bundle.ListActivityCreateLink}"/>
-                <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListActivityIndexLink}"/>
             </h:form>

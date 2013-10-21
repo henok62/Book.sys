@@ -106,6 +106,11 @@ public class ActivityController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
+    public String prepareScheduledActivityManager() {
+        current = (Activity) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "ManageScheduledActivityForActivity";
+    }
 
     public String update() {
         try {

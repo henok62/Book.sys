@@ -86,6 +86,22 @@ public class BusinessController implements Serializable {
             return null;
         }
     }
+    public String prepareCreateInManageBusiness() {
+        current = new Business();
+        selectedItemIndex = -1;
+        return null;
+    }
+
+    public String createInManageBusiness() {
+        try {
+            getFacade().create(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("BusinessCreated"));
+            return prepareCreateInManageBusiness();
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            return null;
+        }
+    }
 
     public String prepareEdit() {
         current = (Business) getItems().getRowData();
