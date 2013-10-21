@@ -7,7 +7,21 @@
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
+        GIRON BOOKING SYSTEM
+        <br />
+        <br />
+        USE CASES
+        <br />
+        <h:form>
+            <h:inputText id="myInteger" size="20" maxlength="100"  value="#{UserSession.user}" />
+            <h:commandButton id="submit" value="submit" action="usecases" />
+        </h:form> 
+        <br />
+        TEMPORARY TESTING LINKS
+        <br />
+        <h:link outcome="/activity/TestFacelet" value="Testing"/>
+        <br />
+        TEMPORARY FACELET CRUD LINKS
         <br />
         <h:link outcome="/activity/List" value="Show All Activity Items"/>
         <br />
@@ -51,26 +65,5 @@
         <br />
         <h:link outcome="/userInstance/List" value="Show All UserInstance Items"/>
     </h:body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>
 

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListActivityTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+               <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateActivityLabel_activityName}" for="activityName" />
+                    <h:inputText id="activityName" value="#{activityController.selected.activityName}" title="#{bundle.CreateActivityTitle_activityName}" />
+                    <h:outputLabel value="#{bundle.CreateActivityLabel_activityInformation}" for="activityInformation" />
+                    <h:inputText id="activityInformation" value="#{activityController.selected.activityInformation}" title="#{bundle.CreateActivityTitle_activityInformation}" />
+                    <h:outputLabel value="#{bundle.CreateActivityLabel_activityResources}" for="activityResources" />
+                    <h:inputText id="activityResources" value="#{activityController.selected.activityResources}" title="#{bundle.CreateActivityTitle_activityResources}" />
+                    <h:outputLabel value="#{bundle.CreateActivityLabel_activityTransports}" for="activityTransports" />
+                    <h:inputText id="activityTransports" value="#{activityController.selected.activityTransports}" title="#{bundle.CreateActivityTitle_activityTransports}" />
+                    <h:outputLabel value="#{bundle.CreateActivityLabel_activityPricing}" for="activityPricing" />
+                    <h:inputText id="activityPricing" value="#{activityController.selected.activityPricing}" title="#{bundle.CreateActivityTitle_activityPricing}" />
+                    <h:outputLabel value="#{bundle.CreateActivityLabel_activityDescription}" for="activityDescription" />
+                    <h:inputText id="activityDescription" value="#{activityController.selected.activityDescription}" title="#{bundle.CreateActivityTitle_activityDescription}" />
+                    <h:outputLabel value="#{bundle.CreateActivityLabel_activityTypeId}" for="activityTypeId" />
+                    <h:selectOneMenu id="activityTypeId" value="#{activityController.selected.activityTypeId}" title="#{bundle.CreateActivityTitle_activityTypeId}" >
+                        <f:selectItems value="#{activityTypeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateActivityLabel_businessId}" for="businessId" />
+                    <h:selectOneMenu id="businessId" value="#{activityController.selected.businessId}" title="#{bundle.CreateActivityTitle_businessId}" >
+                        <f:selectItems value="#{businessController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{activityController.createInManageActivites}" value="#{bundle.CreateActivitySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{activityController.prepareList}" value="#{bundle.CreateActivityShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                
+                <h:link outcome="/index" value="#{bundle.CreateActivityIndexLink}"/>
+            </h:form>
+            
+            
+            
+            
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListActivityEmpty}" rendered="#{activityController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{activityController.items.rowCount > 0}">
+                    <h:outputText value="#{activityController.pagination.pageFirstItem + 1}..#{activityController.pagination.pageLastItem + 1}/#{activityController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{activityController.previous}" value="#{bundle.Previous} #{activityController.pagination.pageSize}" rendered="#{activityController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{activityController.next}" value="#{bundle.Next} #{activityController.pagination.pageSize}" rendered="#{activityController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{activityController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivityTitle_activityId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activityId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivityTitle_activityName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activityName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivityTitle_activityInformation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activityInformation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivityTitle_activityResources}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activityResources}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivityTitle_activityTransports}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activityTransports}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivityTitle_activityPricing}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activityPricing}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivityTitle_activityDescription}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activityDescription}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivityTitle_activityTypeId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activityTypeId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivityTitle_businessId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.businessId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{activityController.prepareView}" value="#{bundle.ListActivityViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{activityController.prepareEdit}" value="#{bundle.ListActivityEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{activityController.destroy}" value="#{bundle.ListActivityDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{activityController.prepareCreate}" value="#{bundle.ListActivityCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListActivityIndexLink}"/>
+            </h:form>
+                     
+        </ui:define>
+    </ui:composition>
+
+</html>

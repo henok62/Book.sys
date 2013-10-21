@@ -75,12 +75,26 @@ public class ActivityController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
-
     public String create() {
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ActivityCreated"));
             return prepareCreate();
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            return null;
+        }
+    }
+    public String prepareCreateInManageActivites() {
+        current = new Activity();
+        selectedItemIndex = -1;
+        return null;
+    }
+    public String createInManageActivites(){
+        try {
+            getFacade().create(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ActivityCreated"));
+            return prepareCreateInManageActivites();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
