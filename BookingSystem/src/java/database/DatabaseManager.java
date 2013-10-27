@@ -64,7 +64,7 @@ public class DatabaseManager {
             st.execute("create table destination(destination_id int not null auto_increment, destination_name varchar(100), destination_description varchar(300), primary key(destination_id));");
             st.execute("create table address(address_id int not null auto_increment, address varchar(200), city varchar(100),\n"
                     + "country varchar(100), primary key(address_id));");
-            st.execute("create table business(business_id int not null auto_increment, business_type_id int, org_number varchar(50), mobile_phone_number varchar(30), \n"
+            st.execute("create table business(business_id int not null auto_increment, business_name varchar(100), business_type_id int, org_number varchar(50), mobile_phone_number varchar(30), \n"
                     + "landline_phone_number varchar(30), fax_no varchar(30), email varchar(100), address_id int, destination_id int, business_description varchar(300), logo blob,\n"
                     + "foreign key(address_id) references address(address_id), foreign key(destination_id) references destination(destination_id),\n"
                     + "foreign key(business_type_id) references business_type(business_type_id), primary key(business_id));");
@@ -151,9 +151,17 @@ public class DatabaseManager {
             st.execute("insert into destination(destination_name, destination_description) values\n"
                     + "('Kiruna', 'Activities and services in Kiruna');");
             st.execute("insert into address (address, city, country) values\n"
-                    + "('Skebokvarnsvägen 1', 'Kiruna', 'Sweden');");
+                    + "('Skebokvarnsvägen 1', 'Bandhagen', 'Sweden');");
+            st.execute("insert into address (address, city, country) values\n"
+                    + "('Norrlandsgatan 1', 'Kiruna', 'Sweden');");
+            st.execute("insert into address (address, city, country) values\n"
+                    + "('Hälsingforsgatan 1', 'Kiruna', 'Sweden');");
             st.execute("insert into booking(user_id) values\n"
                     + "(1);");
+            st.execute("insert into person(first_name, last_name) values\n"
+                    + "('Håkan', 'Enoksson');");
+            st.execute("insert into person(first_name, last_name) values\n"
+                    + "('Joel', 'Tjäder');");
             st.execute("insert into person(personal_number, first_name, last_name) values\n"
                     + "('820219xxxx', 'Mikael', 'Saltzman');");
             st.execute("insert into business_type(business_type_name) values\n"
@@ -164,11 +172,13 @@ public class DatabaseManager {
                     + "('Trip', 'A trip or other activity'),"
                     + "('Accommodation', 'A sleeping accommodation'),"
                     + "('Transport', 'A transportation');");
-            st.execute("insert into business(org_number, mobile_phone_number, landline_phone_number, fax_no, email, business_description) values\n"
-                    + "('0986734523', '07034534545', '083453453', '0877774345', 'myemail@gmail.com', 'Kiruna based business');");
+            st.execute("insert into business(business_name, org_number, mobile_phone_number, landline_phone_number, fax_no, email, business_description) values\n"
+                    + "('Kiruna Travels', '0986734523', '07034534545', '083453453', '0877774345', 'myemail@gmail.com', 'Kiruna based business');");
             st.execute("insert into role(role_name, role_description) values\n"
-                    + "('Super Admin', 'Unlimited system access'),\n"
-                    + "('Admin', 'Unlimited system access'),\n"
+                    + "('Super Administrator', 'Unlimited system access'),\n"
+                    + "('Administrator', 'Unlimited administrative access'),\n"
+                    + "('Administrative Assistant', 'Restricted administrative access'),\n"
+                    + "('Final Customer', 'Final Customer access'),\n"
                     + "('Employee', 'Unlimited system access');");
             st.execute("insert into booking_row(booking_id, scheduled_tour_id, scheduled_activity_id) values\n"
                     + "(1,1,1);");

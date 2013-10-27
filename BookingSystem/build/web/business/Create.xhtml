@@ -15,8 +15,15 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
+                    
+                  
                     <h:outputLabel value="#{bundle.CreateBusinessLabel_businessId}" for="businessId" />
                     <h:inputText id="businessId" value="#{businessController.selected.businessId}" title="#{bundle.CreateBusinessTitle_businessId}" required="true" requiredMessage="#{bundle.CreateBusinessRequiredMessage_businessId}"/>
+                  
+                    
+                    <h:outputLabel value="#{bundle.CreateBusinessLabel_businessName}" for="businessName" />
+                    <h:inputText id="businessName" value="#{businessController.selected.businessName}"  title="#{bundle.CreateBusinessLabel_businessName}" />
+                    
                     <h:outputLabel value="#{bundle.CreateBusinessLabel_orgNumber}" for="orgNumber" />
                     <h:inputText id="orgNumber" value="#{businessController.selected.orgNumber}" title="#{bundle.CreateBusinessTitle_orgNumber}" />
                     <h:outputLabel value="#{bundle.CreateBusinessLabel_mobilePhoneNumber}" for="mobilePhoneNumber" />

@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Business.findAll", query = "SELECT b FROM Business b"),
     @NamedQuery(name = "Business.findByBusinessId", query = "SELECT b FROM Business b WHERE b.businessId = :businessId"),
+    @NamedQuery(name = "Business.findByBusinessName", query = "SELECT b FROM Business b WHERE b.businessName = :businessName"),
     @NamedQuery(name = "Business.findByOrgNumber", query = "SELECT b FROM Business b WHERE b.orgNumber = :orgNumber"),
     @NamedQuery(name = "Business.findByMobilePhoneNumber", query = "SELECT b FROM Business b WHERE b.mobilePhoneNumber = :mobilePhoneNumber"),
     @NamedQuery(name = "Business.findByLandlinePhoneNumber", query = "SELECT b FROM Business b WHERE b.landlinePhoneNumber = :landlinePhoneNumber"),
@@ -47,6 +48,9 @@ public class Business implements Serializable {
     @Column(name = "business_id")
     private Integer businessId;
     @Size(max = 50)
+    @Column(name = "business_name")
+    private String businessName;
+    @Size(max = 100)
     @Column(name = "org_number")
     private String orgNumber;
     @Size(max = 30)
@@ -99,6 +103,13 @@ public class Business implements Serializable {
         this.businessId = businessId;
     }
 
+    public String getBusinessName() {
+        return businessName;
+    }
+
+    public void setBusinessName(String businessName) {
+        this.businessName = businessName;
+    }
     public String getOrgNumber() {
         return orgNumber;
     }
