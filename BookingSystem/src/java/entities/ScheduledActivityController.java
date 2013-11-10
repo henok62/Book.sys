@@ -73,7 +73,7 @@ public class ScheduledActivityController implements Serializable {
     public String prepareCreate() {
         current = new ScheduledActivity();
         selectedItemIndex = -1;
-        return "Create";
+        return "ManageScheduledActivityForActivity";
     }
 
     public String create() {

@@ -37,6 +37,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "ScheduledActivity.findByDateStart", query = "SELECT s FROM ScheduledActivity s WHERE s.dateStart = :dateStart"),
     @NamedQuery(name = "ScheduledActivity.findByDateEnd", query = "SELECT s FROM ScheduledActivity s WHERE s.dateEnd = :dateEnd")})
 public class ScheduledActivity implements Serializable {
+    @OneToMany(mappedBy = "scheduledActivityId")
+    private Collection<ResourceBooking> resourceBookingCollection;
+    @OneToMany(mappedBy = "scheduledActivityId")
+    private Collection<Pricing> pricingCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -137,6 +141,24 @@ public class ScheduledActivity implements Serializable {
     @Override
     public String toString() {
         return "entities.ScheduledActivity[ scheduledActivityId=" + scheduledActivityId + " ]";
+    }
+
+    @XmlTransient
+    public Collection<ResourceBooking> getResourceBookingCollection() {
+        return resourceBookingCollection;
+    }
+
+    public void setResourceBookingCollection(Collection<ResourceBooking> resourceBookingCollection) {
+        this.resourceBookingCollection = resourceBookingCollection;
+    }
+
+    @XmlTransient
+    public Collection<Pricing> getPricingCollection() {
+        return pricingCollection;
+    }
+
+    public void setPricingCollection(Collection<Pricing> pricingCollection) {
+        this.pricingCollection = pricingCollection;
     }
     
 }

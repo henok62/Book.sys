@@ -49,12 +49,21 @@
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
+                 
+                          
                 <h:outputText escape="false" value="#{bundle.ListActivityEmpty}" rendered="#{activityController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{activityController.items.rowCount > 0}">
                     <h:outputText value="#{activityController.pagination.pageFirstItem + 1}..#{activityController.pagination.pageLastItem + 1}/#{activityController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{activityController.previous}" value="#{bundle.Previous} #{activityController.pagination.pageSize}" rendered="#{activityController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{activityController.next}" value="#{bundle.Next} #{activityController.pagination.pageSize}" rendered="#{activityController.pagination.hasNextPage}"/>&nbsp;
                     <h:dataTable value="#{activityController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                             <h:commandLink action="#{activityController.prepareScheduledActivityManager}" value="Schedule this activity"/>
+                         
+                           </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListActivityTitle_activityId}"/>
@@ -113,7 +122,7 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{activityController.prepareScheduledActivityManager}" value="Schedule this activity"/>
+                             <h:commandLink action="#{activityController.prepareScheduledActivityManager}" value="Schedule this activity"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{activityController.prepareView}" value="#{bundle.ListActivityViewLink}"/>
                             <h:outputText value=" "/>

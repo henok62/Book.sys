@@ -21,6 +21,7 @@ import javax.faces.model.SelectItem;
 public class ActivityController implements Serializable {
 
     private Activity current;
+    private ScheduledActivity current2;
     private DataModel items = null;
     @EJB
     private entities.ActivityFacade ejbFacade;
@@ -88,6 +89,8 @@ public class ActivityController implements Serializable {
     public String prepareCreateInManageActivites() {
         current = new Activity();
         selectedItemIndex = -1;
+                recreateModel();
+
         return null;
     }
     public String createInManageActivites(){

@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/web/business/ManageBusiness.xhtml</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/src/java/entities/BusinessController.java</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/web/WEB-INF/web.xml</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/web/WEB-INF/faces-config.xml</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/src/java/entities/util/PaginationHelper.java</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/src/java/entities/util/JsfUtil.java</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/web/businessType/Create.xhtml</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/web/business/Edit.xhtml</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/web/businessType/Edit.xhtml</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/src/java/entities/AllotmentListFacade.java</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/src/java/entities/BusinessFacade.java</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/web/WEB-INF/beans.xml</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/web/template.xhtml</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/src/java/entities/ActivityController.java</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/web/activity/Create.xhtml</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/web/activity/ManageScheduledActivityForActivity.xhtml</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/web/activity/ManageActivities.xhtml</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/src/java/entities/Activity.java</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/src/java/entities/ActivityFacade.java</file>
+        <file>file:/C:/Users/Mikael/Documents/GitHub/Book.sys/BookingSystem/src/java/entities/Business.java</file>
+    </open-files>
 </project-private>

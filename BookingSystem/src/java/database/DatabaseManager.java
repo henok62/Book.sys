@@ -77,7 +77,8 @@ public class DatabaseManager {
                     + "person_id int null, foreign key(person_id) references person(person_id),\n"
                     + "business_id int null, foreign key(business_id) references business(business_id),\n"
                     + "username varchar(30) null, user_password varchar(30) null);");
-            st.execute("create table booking(booking_id int not null auto_increment, primary key(booking_id),\n"
+            st.execute("create table booking(booking_id int not null auto_increment, primary key(booking_id), "
+                    + "timestamp TIMESTAMP, "
                     + "user_id int null, foreign key(user_id) references user_instance(user_id));");
             st.execute("create table tour_type(tour_type_id int not null auto_increment, primary key(tour_type_id),\n"
                     + "business_id int, foreign key(business_id) references business(business_id));");
@@ -97,8 +98,8 @@ public class DatabaseManager {
                     + "activity_pricing varchar(30),"
                     + "activity_description varchar(500));");
             st.execute("create table scheduled_activity(scheduled_activity_id int not null auto_increment, primary key(scheduled_activity_id),\n"
-                    + "activity_id int null, foreign key(activity_id) references activity(activity_id),\n"
-                    + "date_start date, date_end date,\n"
+                    + "activity_id int null, foreign key(activity_id) references activity(activity_id), "
+                    + "date_start date, date_end date, "
                     + "scheduled_tour_id int null, foreign key(scheduled_tour_id) references scheduled_tour(scheduled_tour_id));");
             st.execute("create table booking_row(booking_row_id int not null auto_increment, primary key(booking_row_id),\n"
                     + "booking_id int, foreign key(booking_id) references booking(booking_id), \n"
@@ -116,6 +117,43 @@ public class DatabaseManager {
                     + "primary key(destination_list_id), destination_list_name varchar(300), description varchar(300));");
             st.execute("create table destination_list_item(destination_list_item_id int not null auto_increment, "
                     + "primary key(destination_list_item_id), description varchar(300));");
+
+            // added 10/11/2013 Mikael
+            st.execute("create table resource_type(resource_type_id int not null auto_increment, "
+                    + "primary key(resource_type_id), resource_type_name varchar(200), "
+                    + "resource_type_description varchar(400))");
+            st.execute("create table resource(resource_id int not null auto_increment, "
+                    + "primary key(resource_id), "
+                    + "resource_type_id int, foreign key(resource_type_id) references resource_type(resource_type_id), "
+                    + "resource_name varchar(100), resource_description varchar(400), "
+                    + "person_id int, foreign key(person_id) references person(person_id));");
+            st.execute("create table resource_booking(resource_booking_id int not null auto_increment, "
+                    + "primary key(resource_booking_id), "
+                    + "timestamp TIMESTAMP, "
+                    + "start_time DATETIME, "
+                    + "end_time DATETIME, "
+                    + "scheduled_activity_id int, "
+                    + "foreign key(scheduled_activity_id) references scheduled_activity(scheduled_activity_id),"
+                    + "resource_id int, foreign key(resource_id) references resource(resource_id));");
+            st.execute("create table pricing_category(pricing_category_id int not null auto_increment, "
+                    + "primary key(pricing_category_id),"
+                    + "pricing_category_description varchar(200))");
+            st.execute("create table pricing(pricing_id int not null auto_increment, "
+                    + "primary key(pricing_id), "
+                    + "pricing_category_id int, "
+                    + "foreign key(pricing_category_id) references pricing_category(pricing_category_id), "
+                    + "scheduled_activity_id int, "
+                    + "foreign key(scheduled_activity_id) references scheduled_activity(scheduled_activity_id), "
+                    + "start_time datetime, "
+                    + "end_time datetime, "
+                    + "discount int)");
+            st.execute("insert into resource_booking values();");
+            st.execute("insert into resource values();");
+            st.execute("insert into resource_type values();");
+            st.execute("insert into pricing values();");
+            st.execute("insert into pricing_category values();");
+            // end of add
+
             st.execute("insert into role values();");
             st.execute("insert into person values();");
             st.execute("insert into role values();");

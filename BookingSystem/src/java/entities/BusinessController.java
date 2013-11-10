@@ -89,7 +89,8 @@ public class BusinessController implements Serializable {
     public String prepareCreateInManageBusiness() {
         current = new Business();
         selectedItemIndex = -1;
-        return null;
+        recreateModel();
+        return "ManageBusiness";
     }
 
     public String createInManageBusiness() {

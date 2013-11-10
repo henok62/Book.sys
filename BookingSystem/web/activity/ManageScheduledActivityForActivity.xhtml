@@ -15,8 +15,6 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateScheduledActivityLabel_scheduledActivityId}" for="scheduledActivityId" />
-                    <h:inputText id="scheduledActivityId" value="#{scheduledActivityController.selected.scheduledActivityId}" title="#{bundle.CreateScheduledActivityTitle_scheduledActivityId}" required="true" requiredMessage="#{bundle.CreateScheduledActivityRequiredMessage_scheduledActivityId}"/>
                     <h:outputLabel value="#{bundle.CreateScheduledActivityLabel_dateStart}" for="dateStart" />
                     <h:inputText id="dateStart" value="#{scheduledActivityController.selected.dateStart}" title="#{bundle.CreateScheduledActivityTitle_dateStart}" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -30,8 +28,9 @@
                         <f:selectItems value="#{scheduledTourController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.EditActivityLabel_activityId}" for="activityId" />
-                    <h:inputText id="activityId" value="#{activityController.selected.activityId}" title="Foreign key}" required="true" requiredMessage="#{bundle.CreateScheduledActivityRequiredMessage_scheduledActivityId}"/>
-                 
+                    <h:inputText id="activityId" value="#{activityController.selected.activityId}" required="true" requiredMessage="Activity id must be specified"/>
+                    
+                    
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{scheduledActivityController.create}" value="#{bundle.CreateScheduledActivitySaveLink}" />

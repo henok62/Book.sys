@@ -41,6 +41,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Business.findByEmail", query = "SELECT b FROM Business b WHERE b.email = :email"),
     @NamedQuery(name = "Business.findByBusinessDescription", query = "SELECT b FROM Business b WHERE b.businessDescription = :businessDescription")})
 public class Business implements Serializable {
+    @Lob
+    @Column(name = "logo")
+    private byte[] logo;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -69,9 +72,6 @@ public class Business implements Serializable {
     @Size(max = 300)
     @Column(name = "business_description")
     private String businessDescription;
-    @Lob
-    @Column(name = "logo")
-    private byte[] logo;
     @JoinColumn(name = "business_type_id", referencedColumnName = "business_type_id")
     @ManyToOne
     private BusinessType businessTypeId;
@@ -158,14 +158,6 @@ public class Business implements Serializable {
         this.businessDescription = businessDescription;
     }
 
-    public byte[] getLogo() {
-        return logo;
-    }
-
-    public void setLogo(byte[] logo) {
-        this.logo = logo;
-    }
-
     public BusinessType getBusinessTypeId() {
         return businessTypeId;
     }
@@ -240,6 +232,14 @@ public class Business implements Serializable {
     @Override
     public String toString() {
         return "entities.Business[ businessId=" + businessId + " ]";
+    }
+
+    public byte[] getLogo() {
+        return logo;
+    }
+
+    public void setLogo(byte[] logo) {
+        this.logo = logo;
     }
     
 }
